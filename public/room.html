@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+ <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+ <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+ <link rel="stylesheet" type="text/css" href="css/grid.css" />
+ <link rel="stylesheet" type="text/css" href="css/style.css" />
+ <link rel="stylesheet" type="text/css" href="css/room.css" />
+ <link rel="favicon icon" href="favicon.ico" />
+ <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet">
+ <link type="text/css" rel="stylesheet" href="css/video-js.min.css" />
+ <Title>Virtual Room</Title>
+</head>
+
+<body>
+ <div class="video-player">
+  <video id="vid1" class="video-js vjs-default-skin" controls autoplay width="1024" height="576" data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=v8hZtdzLM18"}] }'>
+        </video>
+ </div>
+ <div class="chat-sidebar">
+     <div id="chat-messages">
+      <label>Chat</label>
+
+      <div class="message">
+        <div class="img"></div>
+       <div class="bubble">
+        Really cool stuff!
+       </div>
+      </div>
+
+      <div class="message right">
+        <div class="img"></div>
+       <div class="bubble">
+        Can you share a link for the tutorial?
+       </div>
+      </div>
+
+      <div class="message">
+        <div class="img"></div>
+       <div class="bubble">
+        Yeah, hold on
+       </div>
+      </div>
+
+      <div class="message right">
+        <div class="img"></div>
+       <div class="bubble">
+        Can you share a link for the tutorial?
+       </div>
+      </div>
+
+      <div class="message">
+        <div class="img"></div>
+       <div class="bubble">
+        Yeah, hold on
+       </div>
+      </div>
+
+     </div>
+
+     <div id="sendmessage">
+      <input type="text" value="Send message..." />
+      <button id="send"></button>
+     </div>
+ </div>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+ <script src="./js/video.min.js"></script>
+ <script src="./js/Youtube.min.js"></script>
+ <script src="./js/room.js"></script>
+ <script>
+  var player = videojs("vid1");
+  player.autoplay(false);
+  //player.currentTime(120);
+  //player.play();
+ </script>
+</body>
+
+</html>
