@@ -32,8 +32,7 @@ roomrouter.route('/:roomId')
     delay = delay / 1000;
     delay = Math.round(delay);
     room.delay = delay;
-    //res.sendFile(path.join(__dirname, '../public/room.html'));
-    res.redirect('../room.html');
+    res.status(200).json(room);
   });
 });
 

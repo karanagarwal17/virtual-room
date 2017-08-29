@@ -6,9 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var roomrouter = require('./routes/roomrouter');
-
 var app = express();
-app.listen(3000);
+var server = app.listen(3000);
+
+var io = require('socket.io')(server);
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -25,6 +26,40 @@ db.once('open', function() {
 	// we're connected!
 	console.log("Connected correctly to server");
 });
+
+app.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key');
+  if (req.method == 'OPTIONS') {
+    res.status(200).end();
+  } else {
+    next();
+  }
+});
+
+io.on('connection', function(socket){
+	console.log("User connected!!");
+	var defaultRoom = 'test';
+
+	var rooms = ['test','test1'];
+
+	socket.emit('setup', {
+		rooms: rooms
+	});
+
+	socket.on('new user', function(data){
+		data.room = defaultRoom;
+		socket.join(defaultRoom);
+		io.in(defaultRoom).emit('user joined',data);
+	})
+
+	socket.on('new message', function(data){
+		console.log("New message has arrived");
+		io.emit('message created', data);
+	})
+
+})
 
 app.use('/room', roomrouter);
 

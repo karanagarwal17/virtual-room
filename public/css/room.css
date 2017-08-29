@@ -20,7 +20,7 @@
   top: 0;
 	left:0;
   right: 0;
-  bottom: 0;
+  bottom: 60px;
 	background:#fff;
 	overflow-y:scroll;
 	overflow-x:hidden;
@@ -93,16 +93,13 @@
 }
 #sendmessage{
 	height:60px;
+  width: 100%;
 	border-top:1px solid #e7ebee;
 	position:absolute;
 	bottom:0;
 	right:0px;
-	width:290px;
 	background:#fff;
 	padding-bottm:50px;
-}
-#sendmessage input{
-	border
 }
 #sendmessage input{
 	background:#fff;
@@ -132,8 +129,4 @@
 }
 #sendmessage button:focus{
 	 outline: 0;
-}
-#chatview, #sendmessage {
-overflow:hidden;
-border-radius:6px;
 }

@@ -16,65 +16,58 @@
 
 <body>
  <div class="video-player">
-  <video id="vid1" class="video-js vjs-default-skin" controls autoplay width="1024" height="576" data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=v8hZtdzLM18"}] }'>
-        </video>
+  <video id="vid1" class="video-js vjs-default-skin" controls width="1024" height="576" data-setup='{ "techOrder": ["youtube", "html5"] }'>
+     <source src="" type="">
+   </video>
  </div>
  <div class="chat-sidebar">
-     <div id="chat-messages">
-      <label>Chat</label>
+  <div id="chat-messages">
+   <label>Chat</label>
 
-      <div class="message">
-        <div class="img"></div>
-       <div class="bubble">
-        Really cool stuff!
-       </div>
-      </div>
+   <div class="message">
+    <div class="img"></div>
+    <div class="bubble">
+     Really cool stuff!
+    </div>
+   </div>
 
-      <div class="message right">
-        <div class="img"></div>
-       <div class="bubble">
-        Can you share a link for the tutorial?
-       </div>
-      </div>
+   <div class="message right">
+    <div class="img"></div>
+    <div class="bubble">
+     Can you share a link for the tutorial?
+    </div>
+   </div>
 
-      <div class="message">
-        <div class="img"></div>
-       <div class="bubble">
-        Yeah, hold on
-       </div>
-      </div>
+   <div class="message">
+    <div class="img"></div>
+    <div class="bubble">
+     Yeah, hold on
+    </div>
+   </div>
 
-      <div class="message right">
-        <div class="img"></div>
-       <div class="bubble">
-        Can you share a link for the tutorial?
-       </div>
-      </div>
+   <div class="message right">
+    <div class="img"></div>
+    <div class="bubble">
+     Can you share a link for the tutorial?
+    </div>
+   </div>
 
-      <div class="message">
-        <div class="img"></div>
-       <div class="bubble">
-        Yeah, hold on
-       </div>
-      </div>
-
-     </div>
-
-     <div id="sendmessage">
-      <input type="text" value="Send message..." />
-      <button id="send"></button>
-     </div>
- </div>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
- <script src="./js/video.min.js"></script>
- <script src="./js/Youtube.min.js"></script>
- <script src="./js/room.js"></script>
- <script>
-  var player = videojs("vid1");
-  player.autoplay(false);
-  //player.currentTime(120);
-  //player.play();
- </script>
+   <div class="message">
+    <div class="img"></div>
+    <div class="bubble">
+     Yeah, hold on
+    </div>
+    </div>
+  </div>
+  <div id="sendmessage">
+   <input type="text" placeholder="Send message..." id="message-content" />
+   <button id="send" onclick="sendMessage()"></button>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="./js/video.min.js"></script>
+  <script src="./js/Youtube.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+  <script src="./js/room.js"></script>
 </body>
 
 </html>
