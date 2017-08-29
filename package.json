@@ -1,0 +1,38 @@
+{
+  "name": "virtual-room",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karanagarwal17/virtual-room.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karanagarwal17/virtual-room/issues"
+  },
+  "homepage": "https://github.com/karanagarwal17/virtual-room#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "mongoose": "^4.11.9",
+    "morgan": "^1.8.2",
+    "path": "^0.12.7",
+    "socket.io": "^2.0.3",
+    "static-favicon": "^2.0.0-alpha",
+    "video.js": "^6.2.5",
+    "videojs-youtube": "^2.4.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "child_process": "^1.0.2",
+    "gulp": "^3.9.1",
+    "gulp-notify": "^3.0.0"
+  }
+}
