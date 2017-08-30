@@ -21,6 +21,7 @@
 	left:0;
   right: 0;
   bottom: 60px;
+  width: 290px;
 	background:#fff;
 	overflow-y:scroll;
 	overflow-x:hidden;
@@ -44,10 +45,15 @@
 	width:290px;
 	display:block;
 }
+#chat-messages label.left{
+	text-align:left;
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
 #chat-messages div.message{
 	padding:0 0 30px 58px;
 	clear:both;
-	margin-bottom:45px;
+	margin-bottom: 35px;
 }
 #chat-messages div.message.right{
 	  padding: 0 58px 30px 0;
@@ -67,7 +73,7 @@
 
 #chat-messages div.message.right .img{
 	float: right;
-    margin-left: 0;
+  margin-left: 0;
 	margin-right: -38px;
 }
 .message .bubble{
@@ -88,7 +94,7 @@
 	  color: #aab8c2;
 	  font-size: 11px;
 	  position: absolute;
-	  right: 0;
+	  left: 0;
 	  bottom: -22px;
 }
 #sendmessage{
@@ -99,12 +105,13 @@
 	bottom:0;
 	right:0px;
 	background:#fff;
-	padding-bottm:50px;
+	padding-bottm:30px;
 }
 #sendmessage input{
 	background:#fff;
 	margin:21px 0 0 21px;
 	border:none;
+  height: 21px;
 	padding:0;
 	font-size:14px;
 	font-family:"Open Sans", sans-serif;

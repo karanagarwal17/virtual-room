@@ -40,23 +40,17 @@ app.all('*', function(req, res, next) {
 
 io.on('connection', function(socket){
 	console.log("User connected!!");
-	var defaultRoom = 'test';
 
-	var rooms = ['test','test1'];
-
-	socket.emit('setup', {
-		rooms: rooms
-	});
+	socket.emit('setup');
 
 	socket.on('new user', function(data){
-		data.room = defaultRoom;
-		socket.join(defaultRoom);
-		io.in(defaultRoom).emit('user joined',data);
+		socket.join(data.roomId);
+		io.in(data.roomId).emit('user joined',data);
 	})
 
 	socket.on('new message', function(data){
 		console.log("New message has arrived");
-		io.emit('message created', data);
+		io.in(data.roomId).emit('message created', data);
 	})
 
 })

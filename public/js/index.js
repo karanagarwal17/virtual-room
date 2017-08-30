@@ -1,3 +1,10 @@
+$(document).ready(function(){
+    $('#text-field').keypress(function(e){
+      if(e.keyCode==13)
+      $('#go-button').click();
+    });
+});
+
 var getRoom = function(){
   var url = $('#text-field').val();
   console.log(url);

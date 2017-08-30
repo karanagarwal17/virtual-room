@@ -3,18 +3,26 @@ $(document).ready(function(){
   var id = document.location.href;
   id = id.split('?')[1].split('=');
   id = id[1];
-  console.log(id);
   var player = videojs("vid1");
 
-  $.get('/room/'+id,function(data){
-    console.log(data.url);
-    var url = 'https://www.youtube.com/watch?v=tbEy9a9aW0Y';
+  $.get('/room/' + id , function(data){
+    var url = data.url;
     player.src({src: url, type: 'video/youtube'});
-    player.autoplay(false);
+    player.autoplay(true);
     player.currentTime(data.delay);
-    //player.play();
+    player.play();
+  });
+
+  $('#message-content').keypress(function(e){
+    if(e.keyCode==13)
+    $('#send').click();
   });
 });
+
+var username = Math.round(Math.random()*1000000) % 1000000;
+var id = document.location.href;
+id = id.split('?')[1].split('=');
+id = id[1];
 
 var addReply = function(x){
   var element = document.getElementById("chat-messages");
@@ -37,27 +45,50 @@ var addLabel = function(x){
   element.innerHTML = html;
   element.scrollTop = element.scrollHeight;
 }
-
+var addUsername = function(x){
+  var element = document.getElementById("chat-messages");
+  var html = element.innerHTML;
+  html += "<label class=\"left\">User: " + x + "</label>";
+  element.innerHTML = html;
+  element.scrollTop = element.scrollHeight;
+}
 var sendMessage = function(){
     var msg = document.getElementById("message-content").value;
     document.getElementById("message-content").value = "";
-    socket.emit('new message', {
-      room: 'test',
-      message: msg
-    });
+    if( msg != ""){
+      socket.emit('new message', {
+        roomId: id,
+        message: msg,
+        username: username
+      });
+    }
 }
-
-var id = document.location.href;
-id = id.split('?')[1].split('=');
-id = id[1];
 
 var socket = io.connect('http://localhost:3000/');
 
 socket.on('message created', function(data){
   console.log(data);
-  addReply(data.message);
+  if(data.username == username){
+    addMessage(data.message);
+  }
+  else {
+    addUsername(data.username);
+    addReply(data.message);
+  }
+});
+
+socket.on('setup', function(data){
+  socket.emit('new user',{
+    roomId: id,
+    username: username
+  });
 });
 
 socket.on('user joined', function(data){
-
+  if(data.username == username){
+    addLabel("You have joined the chatroom");
+  }
+  else {
+    addLabel("User:" + data.username + " has joined");
+  }
 });
